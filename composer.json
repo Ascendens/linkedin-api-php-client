@@ -11,7 +11,7 @@
     ],
     "homepage": "https://github.com/zoonman/linkedin-api-php-client",
     "require": {
-        "php": ">=5.6",
+        "php": "^7.4",
         "ext-curl": "*",
         "guzzlehttp/guzzle": "^6.3"
     },
@@ -42,13 +42,14 @@
         "wiki": "https://github.com/zoonman/linkedin-api-php-client/wiki"
     },
     "autoload": {
-        "psr-4": {"LinkedIn\\": "src/"}
+        "psr-4": {"LinkedIn\\": "src/", "LinkedIn\\Tests\\": "tests/"}
     },
     "require-dev": {
         "vlucas/phpdotenv": "~2.0",
-        "phpunit/phpunit": "~4.0",
+        "phpunit/phpunit": "~8.0",
         "phpmd/phpmd": "@stable",
-        "squizlabs/php_codesniffer": "@stable"
+        "squizlabs/php_codesniffer": "@stable",
+        "ext-json": "*"
     },
     "archive": {
         "exclude": [

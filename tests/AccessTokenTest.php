@@ -14,9 +14,10 @@
  * @link     http://www.zoonman.com/projects/linkedin-client/
  */
 
-namespace LinkedIn;
+namespace LinkedIn\Tests;
 
 use PHPUnit\Framework\TestCase;
+use LinkedIn\AccessToken;
 
 /**
  * Class ClientTest
@@ -58,7 +59,9 @@ class AccessTokenTest extends TestCase
      */
     public function testConstructorFromResponseArrayWithException($exceptionClass, $exceptionMessage, $response)
     {
-        $this->setExpectedException($exceptionClass, $exceptionMessage);
+        $this->expectException($exceptionClass);
+        $this->expectExceptionMessage($exceptionMessage);
+
         AccessToken::fromResponseArray($response);
     }
 

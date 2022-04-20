@@ -14,14 +14,18 @@
  * @link     http://www.zoonman.com/projects/linkedin-client/
  */
 
-namespace LinkedIn;
+namespace LinkedIn\Tests;
+
+use PHPUnit\Framework\TestCase;
+use LinkedIn\Client;
+use LinkedIn\AccessToken;
 
 /**
  * Class ClientTest
  *
  * @package LinkedIn
  */
-class ClientTest extends \PHPUnit_Framework_TestCase
+class ClientTest extends TestCase
 {
 
     /**
@@ -32,7 +36,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     /**
      * Setup test environment
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->client = new Client(
             getenv('LINKEDIN_CLIENT_ID'),
@@ -63,7 +67,8 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $client = new Client();
 
         if ($expectedException !== null) {
-            $this->setExpectedException(get_class($expectedException), $expectedException->getMessage());
+            $this->expectException(get_class($expectedException));
+            $this->expectExceptionMessage($expectedException->getMessage());
         }
 
         $client->setAccessToken($token);
