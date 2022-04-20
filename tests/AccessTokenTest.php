@@ -16,6 +16,7 @@
 
 namespace LinkedIn\Tests;
 
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use LinkedIn\AccessToken;
 
@@ -69,38 +70,38 @@ class AccessTokenTest extends TestCase
     {
         return [
             [
-                'expectedException' => \InvalidArgumentException::class,
+                'expectedException' => InvalidArgumentException::class,
                 'exceptionMessage' => 'Argument is not array',
                 'response' => null,
             ],
             [
-                'expectedException' => \InvalidArgumentException::class,
+                'expectedException' => InvalidArgumentException::class,
                 'exceptionMessage' => 'Access token is not available',
                 'response' => [],
             ],
             [
-                'expectedException' => \InvalidArgumentException::class,
+                'expectedException' => InvalidArgumentException::class,
                 'exceptionMessage' => 'Access token is not available',
                 'response' => [
                     'access_token' => null,
                 ],
             ],
             [
-                'expectedException' => \InvalidArgumentException::class,
+                'expectedException' => InvalidArgumentException::class,
                 'exceptionMessage' => 'Access token is not available',
                 'response' => [
                     'expires_in' => 1,
                 ],
             ],
             [
-                'expectedException' => \InvalidArgumentException::class,
+                'expectedException' => InvalidArgumentException::class,
                 'exceptionMessage' => 'Access token expiration date is not specified',
                 'response' => [
                     'access_token' => 'hello',
                 ],
             ],
             [
-                'expectedException' => \InvalidArgumentException::class,
+                'expectedException' => InvalidArgumentException::class,
                 'exceptionMessage' => 'Access token expiration date is not specified',
                 'response' => [
                     'access_token' => 'hello',
@@ -119,6 +120,6 @@ class AccessTokenTest extends TestCase
     public function testJsonSerialize()
     {
         $token = new AccessToken('hello', 1);
-        $this->assertEquals('{"token":"hello","expiresAt":1}', json_encode($token));
+        $this->assertEquals('{"token":"hello","expiresAt":1}', json_encode($token, JSON_THROW_ON_ERROR));
     }
 }

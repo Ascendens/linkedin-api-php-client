@@ -16,6 +16,9 @@
 
 namespace LinkedIn\Tests;
 
+use Exception;
+use InvalidArgumentException;
+use StdClass;
 use PHPUnit\Framework\TestCase;
 use LinkedIn\Client;
 use LinkedIn\AccessToken;
@@ -29,7 +32,7 @@ class ClientTest extends TestCase
 {
 
     /**
-     * @var \LinkedIn\Client
+     * @var Client
      */
     public $client;
 
@@ -58,7 +61,7 @@ class ClientTest extends TestCase
      *
      * @param $token
      * @param AccessToken|null $expectedToken
-     * @param \Exception|null $expectedException
+     * @param Exception|null $expectedException
      *
      * @dataProvider getSetAccessTokenTestTable
      */
@@ -84,7 +87,7 @@ class ClientTest extends TestCase
             [
                 'token' => null,
                 'expectedToken' => null,
-                'expectedException' => new \InvalidArgumentException('$accessToken must be instance of \LinkedIn\AccessToken class'),
+                'expectedException' => new InvalidArgumentException('$accessToken must be instance of \LinkedIn\AccessToken class'),
             ],
 
             [
@@ -100,9 +103,9 @@ class ClientTest extends TestCase
             ],
 
             [
-                'token' => new \StdClass(),
+                'token' => new StdClass(),
                 'expectedToken' => null,
-                'expectedException' => new \InvalidArgumentException('$accessToken must be instance of \LinkedIn\AccessToken class'),
+                'expectedException' => new InvalidArgumentException('$accessToken must be instance of \LinkedIn\AccessToken class'),
             ],
         ];
     }
