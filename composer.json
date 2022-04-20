@@ -45,11 +45,11 @@
         "psr-4": {"LinkedIn\\": "src/", "LinkedIn\\Tests\\": "tests/"}
     },
     "require-dev": {
-        "vlucas/phpdotenv": "~2.0",
         "phpunit/phpunit": "~8.0",
         "phpmd/phpmd": "@stable",
         "squizlabs/php_codesniffer": "@stable",
-        "ext-json": "*"
+        "ext-json": "*",
+        "vlucas/phpdotenv": "^5.4"
     },
     "archive": {
         "exclude": [
